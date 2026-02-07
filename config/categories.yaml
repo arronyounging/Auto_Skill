@@ -1,0 +1,75 @@
+# Blog Categories for Custyle
+# Each category has SEO metadata and content guidelines
+
+categories:
+  - id: agentic-commerce
+    name: "Agentic Commerce"
+    slug: "agentic-commerce"
+    description: "Insights and analysis on the emerging Agentic Commerce ecosystem — where AI agents autonomously discover, negotiate, and complete transactions."
+    seo_title: "Agentic Commerce Insights | Custyle Blog"
+    meta_description: "Explore how Agentic Commerce is reshaping e-commerce with AI agents that autonomously handle discovery, merchandising, and fulfillment."
+    primary_keywords:
+      - "agentic commerce"
+      - "AI commerce"
+      - "agent initiated transactions"
+    content_guidelines: "Focus on industry trends, protocol developments (ACP), payment infrastructure, and ecosystem shifts. Cite authoritative sources."
+
+  - id: merch-agent
+    name: "AI Merch Agent"
+    slug: "ai-merch-agent"
+    description: "Deep dives into how AI Merch Agents transform intent into sellable, fulfillable merchandise — from prompt to production."
+    seo_title: "AI Merch Agent | Custyle Blog"
+    meta_description: "Learn how AI Merch Agents turn creative intent into sellable products with automated design, SKU generation, and fulfillment."
+    primary_keywords:
+      - "AI merch agent"
+      - "merchandising agent"
+      - "prompt to product"
+    content_guidelines: "Explain Custyle's core workflow (Intent→Design→SKU→Fulfillment). Use concrete examples and visual descriptions."
+
+  - id: prompt-to-product
+    name: "Prompt-to-Product"
+    slug: "prompt-to-product"
+    description: "Practical guides and case studies on turning text prompts or images into production-ready, sellable merchandise."
+    seo_title: "Prompt-to-Product Guides | Custyle Blog"
+    meta_description: "Step-by-step guides on creating custom merchandise from text prompts or images using AI-powered design and production workflows."
+    primary_keywords:
+      - "prompt to product"
+      - "AI product design"
+      - "text to merchandise"
+    content_guidelines: "Practical, tutorial-style content. Include step-by-step workflows, before/after examples, and tips."
+
+  - id: creator-economy
+    name: "Creator Economy"
+    slug: "creator-economy"
+    description: "How creators, communities, and brands use AI merchandising to monetize their identity and audience."
+    seo_title: "Creator Economy & Merch | Custyle Blog"
+    meta_description: "Discover how creators and communities use AI-powered merchandising to turn ideas into revenue with custom products."
+    primary_keywords:
+      - "creator merch"
+      - "creator economy"
+      - "community merchandise"
+    content_guidelines: "Focus on use cases: creators, community merch drops, event merchandise, gifting. Include real-world scenarios."
+
+  - id: supply-chain
+    name: "Supply Chain & Fulfillment"
+    slug: "supply-chain-fulfillment"
+    description: "Inside the fulfillment pipeline — from design validation to production routing, quality control, and delivery."
+    seo_title: "Supply Chain & Fulfillment | Custyle Blog"
+    meta_description: "Explore how AI-driven fulfillment automates production routing, quality checks, and delivery for custom merchandise."
+    primary_keywords:
+      - "fulfillment automation"
+      - "print on demand"
+      - "supply chain AI"
+    content_guidelines: "Technical but accessible. Cover production routing, quality gates, approval mechanisms, and trust frameworks."
+
+  - id: design-technology
+    name: "Design & Technology"
+    slug: "design-technology"
+    description: "The AI and design technology powering next-generation merchandise creation — from generative models to virtual try-on."
+    seo_title: "Design & Technology | Custyle Blog"
+    meta_description: "Technical insights into AI-powered design generation, virtual try-on, and the technology behind modern merchandise creation."
+    primary_keywords:
+      - "AI design generation"
+      - "virtual try-on"
+      - "generative AI fashion"
+    content_guidelines: "Balance technical depth with business value. Explain technology in terms of user and business impact."

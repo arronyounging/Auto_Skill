@@ -1,0 +1,31 @@
+{
+  "name": "custyle-seo-blog-automation",
+  "version": "1.0.0",
+  "description": "SEO blog automation skill for Custyle - generates and publishes AI-optimized articles to the Custyle blog",
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.js",
+    "generate:batch": "node scripts/generate-batch.js",
+    "publish": "node scripts/publish.js",
+    "schedule": "node scripts/schedule.js",
+    "validate": "node scripts/validate.js",
+    "topics": "node scripts/manage-topics.js",
+    "preview": "node scripts/preview.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0",
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0",
+    "marked": "^15.0.0",
+    "node-cron": "^3.0.3",
+    "slugify": "^1.6.6",
+    "chalk": "^5.3.0",
+    "dotenv": "^16.4.7"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,106 @@
+# Custyle Blog Content Calendar
+# 12-week launch plan: 1-2 articles per week, SEO priority
+
+# Week 1-2: Foundation (high-priority, category-defining articles)
+weeks:
+  - week: 1
+    articles:
+      - slug: "what-is-agentic-commerce-guide-2026"
+        status: planned
+        notes: "Foundational SEO piece — defines the category for search"
+      - slug: "what-is-ai-merch-agent"
+        status: planned
+        notes: "Core product positioning article"
+
+  - week: 2
+    articles:
+      - slug: "ai-commerce-trends-2026"
+        status: planned
+        notes: "Trend piece — high search volume, timely"
+      - slug: "prompt-to-product-guide"
+        status: planned
+        notes: "Practical guide — drives understanding of core workflow"
+
+  # Week 3-4: Depth (expand category coverage)
+  - week: 3
+    articles:
+      - slug: "agentic-commerce-protocol-explained"
+        status: planned
+        notes: "ACP deep dive — captures protocol-related searches"
+      - slug: "four-layers-agentic-commerce"
+        status: planned
+        notes: "Positions Custyle in the commerce stack"
+
+  - week: 4
+    articles:
+      - slug: "ai-merch-agent-vs-print-on-demand"
+        status: planned
+        notes: "Comparison piece — captures commercial intent searches"
+      - slug: "creators-ai-merch-drops"
+        status: planned
+        notes: "Creator economy use case — drives BOFU traffic"
+
+  # Week 5-6: Practical content
+  - week: 5
+    articles:
+      - slug: "photo-to-merch-ai-design"
+        status: planned
+        notes: "Tutorial — practical, shareable content"
+
+  - week: 6
+    articles:
+      - slug: "prompting-tips-ai-merch-design"
+        status: planned
+        notes: "Tips article — good for organic search and social"
+      - slug: "design-to-fulfillment-automation"
+        status: planned
+        notes: "Supply chain technical piece"
+
+  # Week 7-8: Trust & Technology
+  - week: 7
+    articles:
+      - slug: "approval-gates-agent-commerce-trust"
+        status: planned
+        notes: "Trust framework — differentiator content"
+
+  - week: 8
+    articles:
+      - slug: "virtual-try-on-custom-merch"
+        status: planned
+        notes: "Technology showcase"
+      - slug: "merchandising-layer-technical-architecture"
+        status: planned
+        notes: "Technical deep dive for developer audience"
+
+  # Week 9-10: Use cases & community
+  - week: 9
+    articles:
+      - slug: "community-merch-group-identity"
+        status: planned
+        notes: "Community use case expansion"
+
+  - week: 10
+    articles:
+      - slug: "ai-powered-custom-gifting"
+        status: planned
+        notes: "Gifting use case — seasonal relevance"
+
+  # Week 11-12: Review & expand
+  - week: 11
+    articles:
+      - slug: "tbd-1"
+        status: planned
+        notes: "Generate new topics based on Week 1-10 performance data"
+
+  - week: 12
+    articles:
+      - slug: "tbd-2"
+        status: planned
+        notes: "Generate new topics based on search console data"
+
+# Ongoing cadence after Week 12
+ongoing:
+  frequency: "1-2 articles per week"
+  review_cycle: "Bi-weekly SEO performance review"
+  update_cycle: "Monthly — update top-performing articles"
+  topic_refresh: "Monthly — generate 4-6 new topics based on search data"

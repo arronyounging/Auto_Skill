@@ -1,0 +1,297 @@
+# Custyle Blog Topic Pool
+# First batch: 16 articles covering all categories and funnel stages
+
+topics:
+  # === Agentic Commerce (Trend / TOFU) ===
+  - title: "What Is Agentic Commerce? The Complete Guide for 2026"
+    slug: "what-is-agentic-commerce-guide-2026"
+    primary_keyword: "agentic commerce"
+    secondary_keywords:
+      - "AI commerce"
+      - "agent initiated transactions"
+      - "agentic commerce protocol"
+    category: agentic-commerce
+    search_intent: informational
+    funnel_stage: TOFU
+    content_type: guide
+    estimated_word_count: 2500
+    priority: 1
+    brief: >
+      Define Agentic Commerce for a business audience. Cover the shift from search/recommend
+      to execute/transact. Explain ACP, Visa/Stripe agent payment infrastructure, and ChatGPT
+      Instant Checkout. Position Custyle as the merchandising layer in this stack.
+
+  - title: "Agentic Commerce Protocol (ACP): What It Means for E-Commerce"
+    slug: "agentic-commerce-protocol-explained"
+    primary_keyword: "agentic commerce protocol"
+    secondary_keywords:
+      - "ACP standard"
+      - "OpenAI commerce"
+      - "agent transactions"
+    category: agentic-commerce
+    search_intent: informational
+    funnel_stage: TOFU
+    content_type: analysis
+    estimated_word_count: 2000
+    priority: 2
+    brief: >
+      Deep dive into the Agentic Commerce Protocol by OpenAI. Explain how it standardizes
+      agent-merchant cooperation, its implications for checkout, payments, and merchandising.
+      Reference Stripe Agentic Commerce Suite and Visa's agent-initiated transactions.
+
+  - title: "5 AI Commerce Trends Reshaping Online Shopping in 2026"
+    slug: "ai-commerce-trends-2026"
+    primary_keyword: "AI commerce trends 2026"
+    secondary_keywords:
+      - "agentic commerce"
+      - "AI shopping"
+      - "commerce automation"
+    category: agentic-commerce
+    search_intent: informational
+    funnel_stage: TOFU
+    content_type: thought-leadership
+    estimated_word_count: 2000
+    priority: 1
+    brief: >
+      Cover the top AI-driven commerce trends: agentic transactions, prompt-to-product,
+      agent-initiated payments, personalized merchandising, and trust/approval frameworks.
+      Each trend should connect to Custyle's positioning.
+
+  - title: "The 4 Layers of Agentic Commerce: Where Value Gets Created"
+    slug: "four-layers-agentic-commerce"
+    primary_keyword: "agentic commerce"
+    secondary_keywords:
+      - "merchandising layer"
+      - "commerce architecture"
+      - "AI commerce stack"
+    category: agentic-commerce
+    search_intent: informational
+    funnel_stage: TOFU
+    content_type: analysis
+    estimated_word_count: 2000
+    priority: 2
+    brief: >
+      Break down the Agentic Commerce stack into Intent, Merchandising, Transaction, and
+      Fulfillment layers. Explain why the Merchandising layer is the scarcest capability
+      and how Custyle occupies this position.
+
+  # === AI Merch Agent (Product / MOFU) ===
+  - title: "What Is an AI Merch Agent? How Custyle Turns Ideas Into Products"
+    slug: "what-is-ai-merch-agent"
+    primary_keyword: "AI merch agent"
+    secondary_keywords:
+      - "merchandising agent"
+      - "AI merchandise"
+      - "prompt to product"
+    category: merch-agent
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: guide
+    estimated_word_count: 2000
+    priority: 1
+    brief: >
+      Define what an AI Merch Agent is and how it differs from design tools, POD platforms,
+      and shopping agents. Walk through the Intent→Design→SKU→Fulfillment workflow.
+      Explain Custyle's Approval Gates trust mechanism.
+
+  - title: "AI Merch Agent vs Print-on-Demand: What's the Difference?"
+    slug: "ai-merch-agent-vs-print-on-demand"
+    primary_keyword: "AI merch agent vs POD"
+    secondary_keywords:
+      - "print on demand AI"
+      - "custom merchandise automation"
+      - "AI vs POD"
+    category: merch-agent
+    search_intent: commercial
+    funnel_stage: MOFU
+    content_type: comparison
+    estimated_word_count: 2000
+    priority: 2
+    brief: >
+      Compare traditional POD workflows with AI Merch Agent capabilities. Cover gaps in
+      design generation, SKU compilation, and fulfillment orchestration that POD alone
+      cannot address. Show how Custyle bridges intent to fulfillment.
+
+  - title: "How Approval Gates Make Agent Commerce Trustworthy"
+    slug: "approval-gates-agent-commerce-trust"
+    primary_keyword: "approval gates ecommerce"
+    secondary_keywords:
+      - "AI commerce trust"
+      - "agent transaction safety"
+      - "agentic commerce"
+    category: merch-agent
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: analysis
+    estimated_word_count: 1800
+    priority: 3
+    brief: >
+      Explore the trust challenge in agent-initiated commerce. Explain Custyle's three-gate
+      approval model (design/budget/delivery) and how it aligns with industry needs for
+      controllable, auditable, accountable agent transactions.
+
+  # === Prompt-to-Product (Practical / MOFU-BOFU) ===
+  - title: "Prompt-to-Product: Turn a Text Idea Into a Sellable Item"
+    slug: "prompt-to-product-guide"
+    primary_keyword: "prompt to product"
+    secondary_keywords:
+      - "text to merchandise"
+      - "AI product design"
+      - "create merch from prompt"
+    category: prompt-to-product
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: tutorial
+    estimated_word_count: 2000
+    priority: 1
+    brief: >
+      Step-by-step guide on the Prompt-to-Product workflow. From entering a text prompt,
+      through AI design generation, SKU mapping, mockup/try-on preview, to checkout.
+      Include concrete examples and tips for better prompts.
+
+  - title: "From Photo to Merch: How AI Turns Images Into Custom Products"
+    slug: "photo-to-merch-ai-design"
+    primary_keyword: "AI custom merch"
+    secondary_keywords:
+      - "image to product"
+      - "AI merchandise design"
+      - "photo merchandise"
+    category: prompt-to-product
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: tutorial
+    estimated_word_count: 1800
+    priority: 2
+    brief: >
+      How to use image uploads to create custom merchandise. Cover the workflow from
+      uploading a photo or design, through AI enhancement and adaptation, to production-ready
+      SKU generation. Include use cases: personal photos, meme merch, brand assets.
+
+  - title: "7 Prompting Tips for Better AI-Generated Merchandise Designs"
+    slug: "prompting-tips-ai-merch-design"
+    primary_keyword: "AI product design workflow"
+    secondary_keywords:
+      - "AI design tips"
+      - "prompt to product"
+      - "merchandise design"
+    category: prompt-to-product
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: tutorial
+    estimated_word_count: 1800
+    priority: 3
+    brief: >
+      Practical tips for writing effective prompts that produce better merchandise designs.
+      Cover style specification, color guidance, placement instructions, and material
+      considerations. Include before/after examples.
+
+  # === Creator Economy (Use Case / MOFU-BOFU) ===
+  - title: "How Creators Can Launch Merch Drops in Minutes with AI"
+    slug: "creators-ai-merch-drops"
+    primary_keyword: "creator merch platform"
+    secondary_keywords:
+      - "AI merch for creators"
+      - "creator economy"
+      - "merch drop"
+    category: creator-economy
+    search_intent: commercial
+    funnel_stage: BOFU
+    content_type: guide
+    estimated_word_count: 2000
+    priority: 1
+    brief: >
+      Guide for content creators on launching merchandise using AI. Cover the complete
+      workflow: idea → design → product page → fulfillment. Address time-to-market,
+      cost control, and audience engagement. Reference Custyle Studio.
+
+  - title: "Community Merch: Turning Group Identity Into Wearable Products"
+    slug: "community-merch-group-identity"
+    primary_keyword: "community merch automation"
+    secondary_keywords:
+      - "community merchandise"
+      - "group merch"
+      - "event merchandise"
+    category: creator-economy
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: guide
+    estimated_word_count: 1800
+    priority: 3
+    brief: >
+      Explore how communities, clubs, and event organizers use AI merchandising to create
+      group identity products. Cover use cases: Discord/Telegram communities, hackathons,
+      meetups, team swag. Show how Custyle enables rapid, small-batch production.
+
+  - title: "AI-Powered Gifting: Send Custom Merchandise as Personalized Gifts"
+    slug: "ai-powered-custom-gifting"
+    primary_keyword: "AI custom merch"
+    secondary_keywords:
+      - "personalized gifts AI"
+      - "custom gift merchandise"
+      - "AI gifting"
+    category: creator-economy
+    search_intent: commercial
+    funnel_stage: BOFU
+    content_type: guide
+    estimated_word_count: 1500
+    priority: 3
+    brief: >
+      How to use AI merchandising for personalized gift creation. Cover the workflow
+      from idea to delivery, budget control via Approval Gates, and delivery time
+      management. Position as a novel gifting experience.
+
+  # === Supply Chain & Fulfillment (Technical / MOFU) ===
+  - title: "Design-to-Fulfillment: How AI Automates the Merch Supply Chain"
+    slug: "design-to-fulfillment-automation"
+    primary_keyword: "design to fulfillment automation"
+    secondary_keywords:
+      - "supply chain AI"
+      - "fulfillment automation"
+      - "automated merchandising"
+    category: supply-chain
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: analysis
+    estimated_word_count: 2000
+    priority: 2
+    brief: >
+      Technical deep dive on how AI orchestrates the journey from design to delivered
+      product. Cover production routing, quality gates, failure handling, and the role
+      of Printful/Printify integrations. Explain how Custyle's SKU→Fulfillment pillar works.
+
+  # === Design & Technology (Technical / TOFU) ===
+  - title: "Virtual Try-On for Custom Merch: How AI Models Wear Your Designs"
+    slug: "virtual-try-on-custom-merch"
+    primary_keyword: "virtual try-on"
+    secondary_keywords:
+      - "AI try-on"
+      - "merchandise preview"
+      - "AI fashion technology"
+    category: design-technology
+    search_intent: informational
+    funnel_stage: TOFU
+    content_type: analysis
+    estimated_word_count: 1800
+    priority: 3
+    brief: >
+      Explain the technology behind virtual try-on for custom merchandise. Cover how
+      AI generates realistic product previews, the role of archetype matching, and why
+      try-on increases purchase confidence and reduces returns.
+
+  - title: "Building the Merchandising Layer: Technical Architecture of an AI Merch Agent"
+    slug: "merchandising-layer-technical-architecture"
+    primary_keyword: "merchandising agent"
+    secondary_keywords:
+      - "AI commerce architecture"
+      - "merch agent API"
+      - "commerce platform design"
+    category: design-technology
+    search_intent: informational
+    funnel_stage: MOFU
+    content_type: analysis
+    estimated_word_count: 2500
+    priority: 2
+    brief: >
+      Technical architecture overview of an AI Merch Agent system. Cover the multi-agent
+      design, intent parsing, design generation pipeline, SKU compilation, and fulfillment
+      orchestration. Reference Build with Custyle and Merch Agent primitives.

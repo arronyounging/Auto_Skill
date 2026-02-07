@@ -1,0 +1,88 @@
+# Custyle Brand Voice & Positioning for Blog Content
+# This file defines the brand identity used in all generated articles
+
+brand:
+  name: Custyle
+  tagline: "The World's First AI MerchAgent™"
+  positioning: "AI Merch Agent for Agentic Commerce"
+  one_liner: "Turning intent into sellable, fulfillable merch with approval-based ordering."
+  one_liner_zh: "把灵感变成可下单、可生产、可交付的定制商品，并通过三道审批闸门确保可控可信。"
+
+  website: https://custyle.ai
+  github: https://github.com/Custyle/custyle-ai
+
+  # Core value pillars (always reference in content)
+  value_pillars:
+    - id: intent-to-design
+      title: "Intent → Design"
+      description: "Understanding and producing executable design proposals from prompts or images"
+    - id: design-to-sku
+      title: "Design → SKU"
+      description: "Compiling designs into sellable SKUs with size, color, craft, cost, and delivery mapping"
+    - id: sku-to-fulfillment
+      title: "SKU → Fulfillment"
+      description: "Routing production, quality verification, failure retry, and after-sales remaking"
+
+  trust_mechanism: "Trust by Approval — design / budget / delivery three-gate approval before ordering"
+
+  # Two product modes
+  modes:
+    consumer:
+      name: "Custyle Studio"
+      tagline: "Create sellable merch drops in minutes"
+      cta: "Start Creating"
+    api:
+      name: "Build with Custyle"
+      tagline: "Let platforms and agents call merchandising capabilities directly"
+      cta: "Build with Custyle"
+
+voice:
+  tone: "Professional yet accessible, innovative but grounded, authoritative without being academic"
+  personality:
+    - Visionary but practical
+    - Technical depth with business clarity
+    - Gen-Z aware but B2B credible
+    - Data-driven, cite sources when possible
+
+  # Writing style guidelines
+  style:
+    sentence_length: "Mix short punchy sentences with deeper explanations"
+    paragraphs: "Keep paragraphs to 3-5 sentences max"
+    jargon_level: "Use industry terms but always explain on first use"
+    cta_style: "Natural, value-driven, not pushy"
+
+  # Words and phrases to use frequently
+  preferred_terms:
+    - "Agentic Commerce"
+    - "AI Merch Agent"
+    - "Prompt-to-Product"
+    - "Merchandising Layer"
+    - "Approval Gates"
+    - "intent to SKU"
+    - "creative-driven merchandising"
+
+  # Words and phrases to avoid
+  avoid_terms:
+    - "just another"
+    - "revolutionary" (overused)
+    - "game-changer" (overused)
+    - "synergy"
+    - "leverage" (as verb, prefer "use")
+
+seo:
+  # Primary target audience
+  target_audience:
+    - "E-commerce technology leaders"
+    - "Digital commerce architects"
+    - "Creator economy builders"
+    - "Brand merchandising managers"
+    - "Platform product managers"
+
+  # Content should always link back to these pages
+  internal_link_targets:
+    - url: "https://custyle.ai"
+      anchor_variations: ["Custyle", "Custyle AI", "custyle.ai"]
+    - url: "https://custyle.ai/gallery"
+      anchor_variations: ["Custyle Gallery", "see examples", "design gallery"]
+    - url: "/blog"
+      anchor_variations: ["our blog", "Custyle blog", "more articles"]

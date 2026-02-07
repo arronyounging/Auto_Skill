@@ -1,0 +1,212 @@
+# Custyle SEO Keyword Matrix
+# Organized by tier: core → long-tail → industry → conversion
+
+keywords:
+  # Tier 1: Core brand & category keywords (highest priority)
+  core:
+    - keyword: "agentic commerce"
+      search_intent: informational
+      priority: 1
+      monthly_volume_est: "medium-rising"
+      difficulty: medium
+      notes: "Category-defining term, Custyle should own this"
+
+    - keyword: "AI merch agent"
+      search_intent: informational
+      priority: 1
+      monthly_volume_est: low
+      difficulty: low
+      notes: "Brand-owned term, define the category"
+
+    - keyword: "prompt to product"
+      search_intent: informational
+      priority: 1
+      monthly_volume_est: low-medium
+      difficulty: low
+      notes: "Core workflow description"
+
+    - keyword: "merchandising agent"
+      search_intent: informational
+      priority: 1
+      monthly_volume_est: low
+      difficulty: low
+      notes: "Category positioning"
+
+    - keyword: "AI merchandise design"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "AI custom merch"
+      search_intent: transactional
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+  # Tier 2: Method & workflow keywords
+  methodology:
+    - keyword: "intent to SKU workflow"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: low
+      difficulty: low
+
+    - keyword: "design to fulfillment automation"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: low
+      difficulty: low
+
+    - keyword: "AI product design workflow"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "automated merchandising"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "AI generated merchandise"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: low
+
+    - keyword: "approval gates ecommerce"
+      search_intent: informational
+      priority: 3
+      monthly_volume_est: low
+      difficulty: low
+
+  # Tier 3: Industry & trend keywords
+  industry:
+    - keyword: "agentic commerce protocol"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: low-medium
+      difficulty: low
+      notes: "ACP standard by OpenAI"
+
+    - keyword: "AI commerce trends 2026"
+      search_intent: informational
+      priority: 1
+      monthly_volume_est: high
+      difficulty: high
+      notes: "Yearly trend piece, update annually"
+
+    - keyword: "creator merch platform"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "print on demand AI"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: high
+      difficulty: high
+
+    - keyword: "custom merchandise automation"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "AI fashion design tool"
+      search_intent: commercial
+      priority: 3
+      monthly_volume_est: high
+      difficulty: high
+
+    - keyword: "agent initiated transactions"
+      search_intent: informational
+      priority: 2
+      monthly_volume_est: low
+      difficulty: low
+
+    - keyword: "instant checkout AI"
+      search_intent: informational
+      priority: 3
+      monthly_volume_est: low-medium
+      difficulty: low
+
+  # Tier 4: Conversion & comparison keywords
+  conversion:
+    - keyword: "how to create custom merch with AI"
+      search_intent: transactional
+      priority: 1
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "AI merch agent vs POD"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: low
+      difficulty: low
+
+    - keyword: "best AI merchandise platform"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: high
+
+    - keyword: "create sellable products from prompt"
+      search_intent: transactional
+      priority: 2
+      monthly_volume_est: low
+      difficulty: low
+
+    - keyword: "AI merch for creators"
+      search_intent: commercial
+      priority: 2
+      monthly_volume_est: medium
+      difficulty: medium
+
+    - keyword: "community merch automation"
+      search_intent: commercial
+      priority: 3
+      monthly_volume_est: low
+      difficulty: low
+
+# Keyword clustering for content planning
+clusters:
+  - name: "Agentic Commerce Fundamentals"
+    primary: "agentic commerce"
+    supporting:
+      - "agentic commerce protocol"
+      - "agent initiated transactions"
+      - "instant checkout AI"
+      - "AI commerce trends 2026"
+
+  - name: "AI Merch Agent"
+    primary: "AI merch agent"
+    supporting:
+      - "merchandising agent"
+      - "prompt to product"
+      - "AI custom merch"
+
+  - name: "Workflow & Methodology"
+    primary: "intent to SKU workflow"
+    supporting:
+      - "design to fulfillment automation"
+      - "AI product design workflow"
+      - "automated merchandising"
+      - "approval gates ecommerce"
+
+  - name: "Creator Economy"
+    primary: "creator merch platform"
+    supporting:
+      - "AI merch for creators"
+      - "community merch automation"
+      - "AI generated merchandise"
+
+  - name: "Product Comparison"
+    primary: "best AI merchandise platform"
+    supporting:
+      - "AI merch agent vs POD"
+      - "print on demand AI"
+      - "custom merchandise automation"

@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.local
+output/drafts/
+output/published/
+*.log
+.DS_Store
+dist/
+.nuxt/
+coverage/

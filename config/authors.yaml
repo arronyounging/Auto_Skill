@@ -1,0 +1,30 @@
+# Blog Authors for Custyle
+# Author profiles used in article frontmatter and author bio sections
+
+authors:
+  - id: custyle-team
+    name: "Custyle Team"
+    role: "Custyle Editorial"
+    avatar: "/images/authors/custyle-team.png"
+    bio: "The Custyle team builds the world's first AI MerchAgent — turning creative intent into sellable, fulfillable merchandise through Agentic Commerce."
+    social:
+      twitter: ""
+      linkedin: ""
+      github: "https://github.com/Custyle"
+    expertise:
+      - "Agentic Commerce"
+      - "AI Merchandising"
+      - "Product Design"
+    default: true
+
+  - id: custyle-engineering
+    name: "Custyle Engineering"
+    role: "Engineering Team"
+    avatar: "/images/authors/custyle-engineering.png"
+    bio: "The engineering team behind Custyle's AI-powered merchandising pipeline — from generative design to production-ready fulfillment."
+    social:
+      github: "https://github.com/Custyle"
+    expertise:
+      - "AI/ML"
+      - "System Architecture"
+      - "Design Technology"
