@@ -10,9 +10,9 @@
  *   node scripts/publish.js --deploy            # Also copy to Nuxt content dir
  */
 
-import { readFileSync, renameSync, existsSync } from 'fs';
-import { resolve, basename } from 'path';
-import { listDrafts, savePublished, deployToNuxt, readArticle, getPaths } from './lib/file-manager.js';
+import { readFileSync, unlinkSync, existsSync } from 'fs';
+import { resolve } from 'path';
+import { listDrafts, savePublished, deployToNuxt, getPaths } from './lib/file-manager.js';
 import chalk from 'chalk';
 import dotenv from 'dotenv';
 
@@ -28,36 +28,6 @@ function parseArgs() {
     else if (args[i] === '--dry-run') flags.dryRun = true;
   }
   return flags;
-}
-
-function publishDraft(draft, flags) {
-  const { DRAFTS_DIR } = getPaths();
-  const content = readFileSync(resolve(DRAFTS_DIR, draft.filename), 'utf-8');
-
-  // Save to published directory
-  const pubPath = savePublished(content, draft.filename);
-  console.log(chalk.green(`  Published: ${pubPath}`));
-
-  // Deploy to Nuxt content directory if requested
-  if (flags.deploy) {
-    try {
-      const nuxtPath = deployToNuxt(content, draft.filename);
-      console.log(chalk.green(`  Deployed:  ${nuxtPath}`));
-    } catch (err) {
-      console.log(chalk.yellow(`  Deploy skipped: ${err.message}`));
-    }
-  }
-
-  // Remove from drafts
-  const draftPath = resolve(DRAFTS_DIR, draft.filename);
-  if (existsSync(draftPath)) {
-    const { PUBLISHED_DIR } = getPaths();
-    // File already copied to published, just remove the draft
-    const fs = await import('fs');
-    fs.unlinkSync(draftPath);
-  }
-
-  return pubPath;
 }
 
 async function main() {
@@ -114,6 +84,13 @@ async function main() {
         } catch (err) {
           console.log(chalk.yellow(`  → Deploy skipped: ${err.message}`));
         }
+      }
+
+      // Remove draft after successful publish
+      const draftPath = resolve(DRAFTS_DIR, draft.filename);
+      if (existsSync(draftPath)) {
+        unlinkSync(draftPath);
+        console.log(chalk.gray(`  → Draft removed`));
       }
     } else {
       console.log(chalk.gray('  → Dry run, no files written'));
