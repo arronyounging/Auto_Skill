@@ -86,12 +86,91 @@ function renderCurrentProduct(data) {
   productInfo.style.display = "block";
 }
 
+// ── 直接注入函数提取数据（无需 sendMessage，避免时序问题）─────────────────────
+function extractFn() {
+  const url      = window.location.href;
+  const pathname = window.location.pathname;
+
+  // 1. URL 解析：/custom/{category}/{id}/{slug}
+  let product_id = null;
+  let category   = null;
+  const urlMatch = pathname.match(/^\/custom\/([^/]+)\/(\d+)\/([^/]+)/);
+  if (urlMatch) {
+    category   = urlMatch[1];
+    product_id = urlMatch[2];
+  }
+
+  // 2. JSON-LD 兜底
+  if (!product_id) {
+    document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+      try {
+        const d = JSON.parse(s.textContent);
+        const items = Array.isArray(d) ? d : [d];
+        items.forEach((item) => {
+          if (item["@type"] === "Product" && !product_id) {
+            [item.url, item.sku, item.productID].forEach((c) => {
+              if (!c) return;
+              const m = String(c).match(/\/(\d+)\//);
+              if (m) product_id = m[1];
+              else if (/^\d+$/.test(String(c))) product_id = String(c);
+            });
+          }
+        });
+      } catch (_) {}
+    });
+  }
+
+  // 3. window.__NUXT__ 兜底
+  if (!product_id) {
+    try {
+      if (window.__NUXT__) {
+        const str = JSON.stringify(window.__NUXT__);
+        const m = str.match(/"product_id"\s*:\s*(\d+)/) || str.match(/"productId"\s*:\s*(\d+)/);
+        if (m) product_id = m[1];
+      }
+    } catch (_) {}
+  }
+
+  // 4. 品类：面包屑 > URL 第二段
+  if (!category) {
+    const crumbs = document.querySelectorAll('nav[aria-label="breadcrumb"] a, [class*="breadcrumb"] a');
+    if (crumbs.length >= 2) {
+      const href = crumbs[crumbs.length - 2].getAttribute("href") || "";
+      const m = href.match(/\/custom\/([^/]+)/);
+      if (m) category = m[1];
+    }
+  }
+  if (!category) {
+    const m = pathname.match(/^\/custom\/([^/]+)/);
+    if (m) category = m[1];
+  }
+
+  // 5. 商品名称：JSON-LD > H1 > og:title
+  let name = null;
+  document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+    try {
+      const d = JSON.parse(s.textContent);
+      const items = Array.isArray(d) ? d : [d];
+      items.forEach((item) => { if (item["@type"] === "Product" && !name) name = item.name; });
+    } catch (_) {}
+  });
+  if (!name) {
+    const h1 = document.querySelector("h1");
+    if (h1) name = h1.textContent.trim();
+  }
+  if (!name) {
+    const og = document.querySelector('meta[property="og:title"]');
+    if (og) name = og.getAttribute("content")?.trim();
+  }
+
+  return { product_id, category, name, url };
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────────
 async function init() {
   pickedList = await loadList();
   renderList();
 
-  // 查询当前激活标签页
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
   if (!tab || !tab.url || !tab.url.includes("printful.com/custom/")) {
@@ -100,29 +179,14 @@ async function init() {
     return;
   }
 
-  // 先尝试强制注入 content script（兼容页面刚加载的情况）
+  // 直接向页面注入函数并获取返回值，无需 sendMessage
   try {
-    await chrome.scripting.executeScript({
+    const [{ result }] = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
-      files: ["content_script.js"],
+      func: extractFn,
     });
-  } catch (_) {
-    // 已注入过会抛错，忽略即可
-  }
-
-  // 稍等 100ms 让 content script 完成初始化
-  await new Promise((r) => setTimeout(r, 100));
-
-  // 向 content script 请求商品信息
-  try {
-    const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PRODUCT_INFO" });
-    if (response && response.success) {
-      currentProduct = response.data;
-      renderCurrentProduct(currentProduct);
-    } else {
-      loadingState.style.display = "none";
-      errorState.style.display   = "block";
-    }
+    currentProduct = result;
+    renderCurrentProduct(currentProduct);
   } catch (err) {
     loadingState.style.display = "none";
     errorState.style.display   = "block";
