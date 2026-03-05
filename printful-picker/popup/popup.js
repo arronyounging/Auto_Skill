@@ -100,6 +100,19 @@ async function init() {
     return;
   }
 
+  // 先尝试强制注入 content script（兼容页面刚加载的情况）
+  try {
+    await chrome.scripting.executeScript({
+      target: { tabId: tab.id },
+      files: ["content_script.js"],
+    });
+  } catch (_) {
+    // 已注入过会抛错，忽略即可
+  }
+
+  // 稍等 100ms 让 content script 完成初始化
+  await new Promise((r) => setTimeout(r, 100));
+
   // 向 content script 请求商品信息
   try {
     const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PRODUCT_INFO" });
@@ -110,25 +123,9 @@ async function init() {
       loadingState.style.display = "none";
       errorState.style.display   = "block";
     }
-  } catch (_) {
-    // content script 未注入（页面刚加载）时，尝试注入后重试
-    try {
-      await chrome.scripting.executeScript({
-        target: { tabId: tab.id },
-        files: ["content_script.js"],
-      });
-      const response = await chrome.tabs.sendMessage(tab.id, { type: "GET_PRODUCT_INFO" });
-      if (response && response.success) {
-        currentProduct = response.data;
-        renderCurrentProduct(currentProduct);
-      } else {
-        loadingState.style.display = "none";
-        errorState.style.display   = "block";
-      }
-    } catch (_) {
-      loadingState.style.display = "none";
-      errorState.style.display   = "block";
-    }
+  } catch (err) {
+    loadingState.style.display = "none";
+    errorState.style.display   = "block";
   }
 }
 
