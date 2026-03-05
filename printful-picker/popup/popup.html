@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Printful 选品助手</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1 class="header__title">
+        <span class="header__icon">🛍</span>
+        Printful 选品助手
+      </h1>
+      <span class="badge" id="badge">0</span>
+    </header>
+
+    <!-- 当前页商品预览 -->
+    <section class="current-product" id="currentProduct">
+      <div class="current-product__loading" id="loadingState">
+        <span class="spinner"></span> 正在识别商品...
+      </div>
+      <div class="current-product__info" id="productInfo" style="display:none">
+        <div class="product-field">
+          <label>商品名称</label>
+          <span id="pName" class="product-field__value"></span>
+        </div>
+        <div class="product-field">
+          <label>品类</label>
+          <span id="pCategory" class="product-field__value tag"></span>
+        </div>
+        <div class="product-field">
+          <label>Product ID</label>
+          <span id="pId" class="product-field__value mono"></span>
+        </div>
+        <button class="btn btn--primary" id="addBtn">＋ 加入选品</button>
+      </div>
+      <div class="current-product__error" id="errorState" style="display:none">
+        <span>⚠️ 当前页面不是 Printful 商品页</span>
+      </div>
+      <div class="current-product__duplicate" id="duplicateState" style="display:none">
+        <span>✅ 该商品已在选品列表中</span>
+      </div>
+    </section>
+
+    <!-- 分割线 -->
+    <div class="divider">
+      <span>已选品列表</span>
+    </div>
+
+    <!-- 选品列表 -->
+    <section class="list-section">
+      <div class="list-empty" id="emptyState">
+        <span>暂无选品，浏览商品页后点击「加入选品」</span>
+      </div>
+      <ul class="product-list" id="productList"></ul>
+    </section>
+
+    <!-- 底部操作栏 -->
+    <footer class="footer" id="footer" style="display:none">
+      <button class="btn btn--danger btn--sm" id="clearBtn">清空列表</button>
+      <button class="btn btn--export" id="exportBtn">
+        ⬇ 导出 JSON
+      </button>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
