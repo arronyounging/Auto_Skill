@@ -100,14 +100,15 @@ function extractFn() {
   function scanForId(str) {
     if (!str || str.length > 2000000) return null;
     const patterns = [
-      // Apollo GraphQL 缓存键：{"Product:320": {...}} 或 "Product:320"
-      /["']Product:(\d+)["']/,
-      /ROOT_QUERY.*?Product.*?:(\d+)/,
-      // 明确字段名
-      /"product_id"\s*:\s*(\d+)/,
+      // Printful Apollo 缓存键：PFCore://CatalogProduct/320
+      /CatalogProduct\/(\d+)/,
+      /["']PFCore:\/\/CatalogProduct\/(\d+)["']/,
+      // GraphQL 响应字段
       /"productId"\s*:\s*(\d+)/,
-      /"id"\s*:\s*(\d+).*?"__typename"\s*:\s*"Product"/,
-      /"__typename"\s*:\s*"Product".*?"id"\s*:\s*(\d+)/,
+      /"product_id"\s*:\s*(\d+)/,
+      /"id"\s*:\s*"PFCore:\/\/CatalogProduct\/(\d+)"/,
+      // 通用 Product 类型兜底
+      /"__typename"\s*:\s*"CatalogProduct"[^}]*?"id"\s*[:\s]+(\d+)/,
       /product_id['":\s]+(\d{2,6})\b/,
       /productId['":\s]+(\d{2,6})\b/,
     ];
@@ -193,7 +194,7 @@ function extractFn() {
       if (apolloData) {
         // 先直接扫键名（最可靠）
         for (const key of Object.keys(apolloData)) {
-          const m = key.match(/^Product:(\d+)$/);
+          const m = key.match(/CatalogProduct\/(\d+)/) || key.match(/^Product:(\d+)$/);
           if (m) { product_id = m[1]; break; }
         }
         // 键名没找到则字符串扫描
@@ -212,7 +213,7 @@ function extractFn() {
         // 找含 "Product:数字" 键的对象
         const keys = Object.keys(val);
         for (const k of keys) {
-          const m = k.match(/^Product:(\d+)$/);
+          const m = k.match(/CatalogProduct\/(\d+)/) || k.match(/^Product:(\d+)$/);
           if (m) { product_id = m[1]; break; }
         }
         if (product_id) break;
@@ -283,6 +284,7 @@ async function init() {
     const results = await chrome.scripting.executeScript({
       target: { tabId: tab.id },
       func:   extractFn,
+      world:  "MAIN",   // 必须在页面主世界运行，才能访问 window.__NUXT__ / Apollo 缓存
     });
     const result = results && results[0] && results[0].result;
     currentProduct = result;
