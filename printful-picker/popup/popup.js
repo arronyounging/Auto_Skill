@@ -100,14 +100,37 @@ function extractFn() {
   function scanForId(str) {
     if (!str || str.length > 2000000) return null;
     const patterns = [
+      // Apollo GraphQL 缓存键：{"Product:320": {...}} 或 "Product:320"
+      /["']Product:(\d+)["']/,
+      /ROOT_QUERY.*?Product.*?:(\d+)/,
+      // 明确字段名
       /"product_id"\s*:\s*(\d+)/,
       /"productId"\s*:\s*(\d+)/,
+      /"id"\s*:\s*(\d+).*?"__typename"\s*:\s*"Product"/,
+      /"__typename"\s*:\s*"Product".*?"id"\s*:\s*(\d+)/,
       /product_id['":\s]+(\d{2,6})\b/,
       /productId['":\s]+(\d{2,6})\b/,
     ];
     for (const p of patterns) {
       const m = str.match(p);
       if (m) return m[1];
+    }
+    return null;
+  }
+
+  // ── 辅助：在对象中递归找 product id ────────────────────────────────────────
+  function deepFindId(obj, depth) {
+    if (depth <= 0 || !obj || typeof obj !== "object") return null;
+    for (const key of Object.keys(obj)) {
+      if (/^Product:(\d+)$/.test(key)) return key.match(/(\d+)$/)[1];
+      if ((key === "product_id" || key === "productId" || key === "id") &&
+          typeof obj[key] === "number" && obj[key] > 0) {
+        // 确认附近有 Product 类型标志
+        const str = JSON.stringify(obj);
+        if (str.includes("Product") || str.includes("product")) return String(obj[key]);
+      }
+      const found = deepFindId(obj[key], depth - 1);
+      if (found) return found;
     }
     return null;
   }
@@ -146,15 +169,54 @@ function extractFn() {
   // ── 3. window.__NUXT__ ────────────────────────────────────────────────────
   if (!product_id) {
     try {
-      if (window.__NUXT__) product_id = scanForId(JSON.stringify(window.__NUXT__));
+      if (window.__NUXT__) {
+        // 先扫 Apollo 缓存键（Nuxt + Apollo 常见结构）
+        const nuxtStr = JSON.stringify(window.__NUXT__);
+        // "Product:320" 键
+        const apolloKeyMatch = nuxtStr.match(/"Product:(\d+)"/);
+        if (apolloKeyMatch) {
+          product_id = apolloKeyMatch[1];
+        } else {
+          product_id = scanForId(nuxtStr);
+        }
+      }
     } catch (_) {}
   }
 
   // ── 4. window.__APOLLO_STATE__ ────────────────────────────────────────────
   if (!product_id) {
     try {
-      const s = window.__APOLLO_STATE__ || window.__APOLLO_CLIENT__?.cache?.data?.data;
-      if (s) product_id = scanForId(JSON.stringify(s));
+      // Apollo 把缓存存成 {"Product:320": {...}} 格式，键名直接含 ID
+      const apolloData = window.__APOLLO_STATE__
+        || (window.__APOLLO_CLIENT__ && window.__APOLLO_CLIENT__.cache && window.__APOLLO_CLIENT__.cache.data && window.__APOLLO_CLIENT__.cache.data.data)
+        || null;
+      if (apolloData) {
+        // 先直接扫键名（最可靠）
+        for (const key of Object.keys(apolloData)) {
+          const m = key.match(/^Product:(\d+)$/);
+          if (m) { product_id = m[1]; break; }
+        }
+        // 键名没找到则字符串扫描
+        if (!product_id) product_id = scanForId(JSON.stringify(apolloData));
+      }
+    } catch (_) {}
+  }
+
+  // ── 4b. 遍历所有 window.__ 开头对象寻找 Apollo 缓存 ─────────────────────
+  if (!product_id) {
+    try {
+      for (const key of Object.keys(window)) {
+        if (!key.startsWith("__")) continue;
+        const val = window[key];
+        if (!val || typeof val !== "object") continue;
+        // 找含 "Product:数字" 键的对象
+        const keys = Object.keys(val);
+        for (const k of keys) {
+          const m = k.match(/^Product:(\d+)$/);
+          if (m) { product_id = m[1]; break; }
+        }
+        if (product_id) break;
+      }
     } catch (_) {}
   }
 
