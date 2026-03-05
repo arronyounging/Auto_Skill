@@ -230,24 +230,71 @@ function extractFn() {
     }
   }
 
-  // ── 6. 品类：面包屑 > URL 提取 ───────────────────────────────────────────
+  // ── 6. 品类：Apollo 缓存 > 面包屑 > URL ──────────────────────────────────
+
+  // 6a. 从 Apollo 缓存里找到产品条目，解析 categories 引用
+  if (!category && product_id) {
+    try {
+      for (const wKey of Object.keys(window)) {
+        if (!wKey.startsWith("__")) continue;
+        const cache = window[wKey];
+        if (!cache || typeof cache !== "object") continue;
+        const productKey = `PFCore://CatalogProduct/${product_id}`;
+        const productEntry = cache[productKey];
+        if (!productEntry) continue;
+
+        // 直接有 categoryName 字段
+        if (productEntry.categoryName) { category = productEntry.categoryName; break; }
+
+        // categories 是引用数组：[{__ref: "PFCore://Category/5"}]
+        const cats = productEntry.categories || productEntry.category;
+        if (Array.isArray(cats) && cats.length > 0) {
+          const firstRef = (cats[0] && cats[0].__ref) || cats[0];
+          if (typeof firstRef === "string") {
+            const catEntry = cache[firstRef];
+            if (catEntry && catEntry.name) { category = catEntry.name; break; }
+          }
+          if (typeof cats[0] === "object" && cats[0].name) { category = cats[0].name; break; }
+        }
+
+        // 扫描 cache 里所有 Category 条目，找 title/name 字段
+        if (!category) {
+          for (const cKey of Object.keys(cache)) {
+            if (!cKey.includes("Category")) continue;
+            const c = cache[cKey];
+            if (c && c.name && typeof c.name === "string") { category = c.name; break; }
+          }
+        }
+        if (category) break;
+      }
+    } catch (_) {}
+  }
+
+  // 6b. 面包屑导航（DOM）
   if (!category) {
     const crumbSelectors = [
       'nav[aria-label="breadcrumb"] a',
       '[class*="breadcrumb"] a',
       '[class*="Breadcrumb"] a',
+      'ol li a',
     ];
     for (const sel of crumbSelectors) {
       const crumbs = document.querySelectorAll(sel);
       if (crumbs.length >= 2) {
         const href = crumbs[crumbs.length - 2].getAttribute("href") || "";
         const m    = href.match(/\/custom\/([^/?#]+)/);
-        if (m) { category = m[1]; break; }
+        if (m && !["mens","womens","kids","all","unisex"].includes(m[1])) {
+          category = m[1]; break;
+        }
+        // 直接取文字（取倒数第二个链接的文本）
+        const text = crumbs[crumbs.length - 2].textContent.trim();
+        if (text && text.length > 2 && text.length < 60) { category = text; break; }
       }
     }
   }
+
+  // 6c. URL 第二段兜底
   if (!category) {
-    // 取 URL 中 /custom/ 后第一段，过滤纯筛选词
     const m = pathname.match(/^\/custom\/([^/]+)/);
     if (m && !["mens","womens","kids","all","unisex"].includes(m[1])) category = m[1];
   }
